@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #003638;" BorderPane.alignment="CENTER">
+         <children>
+            <QuadCurve controlX="-20.0" controlY="87.0" endX="-97.0" endY="192.0" fill="WHITE" layoutX="97.0" layoutY="208.0" startX="-97.0" startY="-218.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="createAccountBtn" layoutX="98.0" layoutY="316.0" mnemonicParsing="false" onAction="#fieldValidation" prefHeight="37.0" prefWidth="126.0" style="-fx-background-color: #f3f2c9; -fx-text-fill: #003638; -fx-background-radius: 15px;" text="Create Account">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="loginBtn" layoutX="37.0" layoutY="362.0" mnemonicParsing="false" onAction="#navigateTOLogin" prefHeight="30.0" prefWidth="249.0" style="-fx-background-color: transparent; -fx-text-fill: #f3f2c9;" text="Have an Account? login instead" underline="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label alignment="CENTER" layoutX="46.0" layoutY="135.0" prefHeight="18.0" prefWidth="249.0" style="-fx-text-fill: #f3f2c9;" text="UNIVERSITY">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Line endX="111.0" layoutX="171.0" layoutY="180.0" startX="-112.0" stroke="WHITE" />
+            <Label layoutX="101.0" layoutY="183.0" prefHeight="18.0" prefWidth="122.0" style="-fx-text-fill: #f3f2c9;" text="Of Group A">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="302.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="23.0" layoutY="27.0" style="-fx-text-fill: #003638;" text="Sign Up" textFill="#e4e4e4">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameField" layoutX="52.0" layoutY="116.0" prefHeight="26.0" prefWidth="203.0" promptText="Username" style="-fx-background-color: #e4e4e4; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <ComboBox fx:id="roleField" layoutX="52.0" layoutY="181.0" prefHeight="25.0" prefWidth="205.0" promptText="Select role" style="-fx-background-color: #e4e4e4; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
+            <PasswordField fx:id="passwordField" layoutX="52.0" layoutY="252.0" prefHeight="25.0" prefWidth="206.0" promptText="password" style="-fx-background-color: #e4e4e4; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></PasswordField>
+            <PasswordField fx:id="confirmField" layoutX="51.0" layoutY="322.0" prefHeight="25.0" prefWidth="206.0" promptText="confirm password" style="-fx-background-color: #e4e4e4; -fx-background-radius: 10px; -fx-border-radius: 10px;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></PasswordField>
+            <Label fx:id="usernameErr" layoutX="52.0" layoutY="147.0" prefHeight="17.0" prefWidth="170.0" style="-fx-text-fill: red;">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+            <Label fx:id="roleErr" layoutX="52.0" layoutY="212.0" prefHeight="17.0" prefWidth="202.0" style="-fx-text-fill: red;">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordErr" layoutX="54.0" layoutY="277.0" prefHeight="17.0" prefWidth="198.0" style="-fx-text-fill: red;">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmErr" layoutX="52.0" layoutY="347.0" prefHeight="17.0" prefWidth="193.0" style="-fx-text-fill: red;">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="52.0" layoutY="99.0" style="-fx-text-fill: #003638;" text="Username" />
+            <Label layoutX="52.0" layoutY="164.0" style="-fx-text-fill: #003638;" text="Role:" />
+            <Label layoutX="52.0" layoutY="235.0" style="-fx-text-fill: #003638;" text="Password:" />
+            <Label layoutX="53.0" layoutY="305.0" style="-fx-text-fill: #003638;" text="Confirm  Password:" />
+         </children></AnchorPane>
+   </left>
+</BorderPane>

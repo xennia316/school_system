@@ -1,0 +1,27 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.tab-pane{
+	-fx-tab-max-height:-1px;
+}
+.tab-pane .tab-header-area{
+	visibility: hidden ;
+}
+
+#label-slider{
+	-fx-background-color: #f3f2c9;
+	-fx-text-fill: #003638;
+	-fx-alignment: center;
+	-fx-font-size: 16px;
+	-fx-background-radius: 8px;
+}
+
+.text-field{
+	-fx-border-color: #003638;
+}
+
+.date-picker{
+	-fx-border-color: #003638;
+}
+
+.combo-box{
+	-fx-border-color: #003638;
+}

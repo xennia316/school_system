@@ -1,0 +1,150 @@
+package application;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Label;
+
+import javafx.scene.control.ComboBox;
+
+import javafx.scene.control.PasswordField;
+
+public class SignUpController implements Initializable{
+	private Scene scene;
+	private Stage stage;
+	private Parent root;
+	@FXML
+	private Button createAccountBtn;
+	@FXML
+	private Button loginBtn;
+	@FXML
+	private TextField usernameField;
+	@FXML
+	private ComboBox<String> roleField;
+	@FXML
+	private PasswordField passwordField;
+	@FXML
+	private PasswordField confirmField;
+	@FXML
+	private Label usernameErr;
+	@FXML
+	private Label roleErr;
+	@FXML
+	private Label passwordErr;
+	@FXML
+	private Label confirmErr;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ObservableList<String> list = FXCollections.observableArrayList("Admin", "Student");
+		roleField.setItems(list);
+	}
+	//validate all the text, password, and combo fields 
+	//Throws appropriate errors.
+	public void fieldValidation(ActionEvent e) {
+		boolean username = usernameField.getText().isEmpty();
+		boolean password = passwordField.getText().isEmpty();
+		boolean role = roleField.getSelectionModel().isEmpty();
+		
+		//check if user name field is empty
+		if(username) {
+			usernameErr.setText("Username should not be empty");
+		}else {
+			usernameErr.setText("");
+		}
+		if(role) {
+			roleErr.setText("This field should not be empty");
+		}else {
+			roleErr.setText("");
+		}
+		//check if password field is empty
+		if(password) {
+			passwordErr.setText("This field should not be empty");
+		}else {
+			passwordErr.setText("");
+		}
+		
+		if(passwordField.getText().contentEquals(confirmField.getText())){
+			confirmErr.setText("");
+		}else {
+			confirmErr.setText("Passwords must match");
+		}
+		
+		if(!username  && !password && passwordField.getText().contentEquals(confirmField.getText())) {
+			SignUP(e);
+		}
+	}
+	//to add a user into the database
+	public void SignUP(ActionEvent e) {
+		DatabaseConnection database  = new DatabaseConnection();
+		Connection con = database.getConnection();
+		String query = "Insert into user(username, passwords, role) values ('"+usernameField.getText()+"','"+passwordField.getText()+"', '"+roleField.getSelectionModel().getSelectedItem().toString()+"') ";
+		try {
+			Statement ps = con.createStatement();
+			int i = ps.executeUpdate(query);
+			if(i == 1) {
+				System.out.println("Success");
+				navigate(e);
+			}else {
+				System.out.println("not success");
+			}
+		}catch(Exception err) {
+			err.printStackTrace();
+		}
+	}
+	public void navigateTOLogin(ActionEvent e)throws IOException {
+		root  = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchToStudPanel(ActionEvent e) throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		root  = loader.load(getClass().getResource("Login.fxml").openStream());
+		RegistrationController reg = (RegistrationController)loader.getController();
+		reg.getUser(usernameField.getText());
+		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+	public void switchToAdminPanel(ActionEvent e) throws IOException{
+		root  = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	//to navigate a users to the appropriate screen after signup
+	public void navigate(ActionEvent e) {
+		if(roleField.getSelectionModel().getSelectedItem().contentEquals("Student")) {
+			try {
+				switchToStudPanel(e);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}else {
+			
+		}
+	}
+
+}
