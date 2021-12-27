@@ -126,7 +126,7 @@ public class RegistrationController implements Initializable{
 		}
 		else errField.setText("Some fields are empty");
 	}
-	// validate the form fields
+	// validate the form field
 	public boolean validate() {
 		if(nameField.getText().isEmpty() || surnameField.getText().isEmpty() || sexField.getSelectionModel().isEmpty() || dobFIeld.getTypeSelector().isEmpty() || nationalityField.getText().isEmpty() || statusField.getText().isEmpty())return false;
 		return true;
