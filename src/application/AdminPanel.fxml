@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
+   <children>
+      <Rectangle fx:id="loginBtn" arcHeight="5.0" arcWidth="5.0" fill="#003638" height="87.0" layoutX="-4.0" layoutY="-9.0" stroke="BLACK" strokeType="INSIDE" width="648.0" />
+      <Label layoutX="11.0" layoutY="22.0" prefHeight="45.0" prefWidth="194.0" text="Admin Panel" textFill="#f3f2c9">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="282.0" fitWidth="397.0" layoutX="111.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@undraw_control_panel_re_y3ar.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="regBtn" layoutX="111.0" layoutY="418.0" mnemonicParsing="false" onAction="#getRegisterPage" prefHeight="58.0" prefWidth="146.0" style="-fx-background-color: #003638; -fx-background-radius: 10px;" text="Register Students" textFill="#f3f2c9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="reportBtn" layoutX="382.0" layoutY="418.0" mnemonicParsing="false" onAction="#getReportsPage" prefHeight="57.0" prefWidth="146.0" style="-fx-background-color: #003638; -fx-background-radius: 10px;" text="Create Reports" textFill="#f3f2c9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="logouttBn" layoutX="552.0" layoutY="45.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #f3f2c9; -fx-background-radius: 10px;" text="Logout" textFill="#003638">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
