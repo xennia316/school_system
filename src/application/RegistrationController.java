@@ -41,6 +41,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration; 
 
 public class RegistrationController implements Initializable{
+	private ByteArrayInputStream bais;
 	private Stage stage;
 	@FXML
 	private Pane slidingPane;
@@ -133,13 +134,12 @@ public class RegistrationController implements Initializable{
 	}
 	
 	//select pdf from files
-	public ByteArrayInputStream chooseFile(ActionEvent e) throws IOException {
+	public void chooseFile(ActionEvent e) throws IOException {
 		FileChooser fc = new FileChooser();
 		fc.getExtensionFilters().addAll(new ExtensionFilter("PDF File", "*pdf"));
 		File file = fc.showOpenDialog(stage);
-		ByteArrayInputStream bais = new ByteArrayInputStream(getByteArray(file));
-		return bais;
-		
+	    bais = new ByteArrayInputStream(getByteArray(file));
+	
 	}
 	private byte[] getByteArray( File doc)throws IOException {
 		final ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -161,7 +161,7 @@ public class RegistrationController implements Initializable{
 		  String department[] =departmentField.getSelectionModel().getSelectedItem().split(" ");
 		  String departmentId =  department[0].substring(0, 1) + department[1].substring(0, 1);
 		  String classId = cycleId + departmentId;
-		String query = "Insert into student(studName, studSurname, sex, dob, nationality, pob, parentName, parentAddress, division, maritalStatus, cycleId, departmentId, classId, qualification) values('"+nameField.getText()+"','"+surnameField.getText()+"', '"+sexField.getSelectionModel().getSelectedItem()+"', '"+dobFIeld.getValue().toString()+"','"+nationalityField.getText()+"', '"+pobFIeld.getText()+"',  '"+parentnameFIeld.getText()+"', '"+parentaddressField.getText()+"', '"+divisionField.getText()+"','"+statusField.getText()+"', '"+cycleId+"', '"+departmentId+"', '"+classId+"', '"+chooseFile(e)+"')";
+		String query = "Insert into student(studName, studSurname, sex, dob, nationality, pob, parentName, parentAddress, division, maritalStatus, cycleId, departmentId, classId, qualification) values('"+nameField.getText()+"','"+surnameField.getText()+"', '"+sexField.getSelectionModel().getSelectedItem()+"', '"+dobFIeld.getValue().toString()+"','"+nationalityField.getText()+"', '"+pobFIeld.getText()+"',  '"+parentnameFIeld.getText()+"', '"+parentaddressField.getText()+"', '"+divisionField.getText()+"','"+statusField.getText()+"', '"+cycleId+"', '"+departmentId+"', '"+classId+"', '"+bais+"')";
 		System.out.println(cycleId);
 		System.out.println(departmentId);
 	    try {
@@ -169,6 +169,14 @@ public class RegistrationController implements Initializable{
 	    	
 	    	int i = statement.executeUpdate(query);
 	    	if(i == 1) {
+	    		regStatus.setText("Your Registration request is pending");
+	    		TranslateTransition toHome = new TranslateTransition(new Duration(500), slideHome);
+	    		toHome.setToX(slidingPane.getTranslateX());
+	    		toHome.play();
+	    		toHome.setOnFinished((ActionEvent ev)->{
+	    			slideHome.setText("Home");
+	    		});
+	    		tabPane.getSelectionModel().select(tabHome);
 	    		System.out.println("welldone");
 	    	}else {
 	    		System.out.println("wene");

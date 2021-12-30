@@ -99,7 +99,6 @@ public class SignUpController implements Initializable{
 			Statement ps = con.createStatement();
 			int i = ps.executeUpdate(query);
 			if(i == 1) {
-				System.out.println("Success");
 				navigate(e);
 			}else {
 				System.out.println("not success");
@@ -116,10 +115,8 @@ public class SignUpController implements Initializable{
 		stage.show();
 	}
 	public void switchToStudPanel(ActionEvent e) throws IOException{
-		FXMLLoader loader = new FXMLLoader();
-		root  = loader.load(getClass().getResource("Login.fxml").openStream());
-		RegistrationController reg = (RegistrationController)loader.getController();
-		reg.getUser(usernameField.getText());
+		//FXMLLoader loader = new FXMLLoader();
+		root  = FXMLLoader.load(getClass().getResource("Registration.fxml"));
 		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -127,7 +124,7 @@ public class SignUpController implements Initializable{
 		stage.show();
 	}
 	public void switchToAdminPanel(ActionEvent e) throws IOException{
-		root  = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+		root  = FXMLLoader.load(getClass().getResource("AdminPanel.fxml"));
 		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -143,7 +140,12 @@ public class SignUpController implements Initializable{
 				e1.printStackTrace();
 			}
 		}else {
-			
+			try {
+				switchToAdminPanel(e);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

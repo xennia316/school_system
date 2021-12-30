@@ -66,11 +66,24 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="regStatus" layoutX="46.0" layoutY="82.0" prefHeight="27.0" prefWidth="243.0" text="You are not yet registered" textFill="#003638">
+                        <Label fx:id="regStatus" layoutX="46.0" layoutY="82.0" prefHeight="27.0" prefWidth="381.0" text="You are not yet registered" textFill="#003638">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="347.0" fitWidth="498.0" layoutX="106.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@undraw_happy_announcement_re_tsm0.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="626.0" layoutY="476.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #003638;" text="Logout" textFill="#f3f2c9">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>
@@ -140,8 +153,14 @@
                               </Label>
                               <ComboBox fx:id="cycleField" layoutX="20.0" layoutY="148.0" prefHeight="39.0" prefWidth="292.0" promptText="Cycle" />
                               <ComboBox fx:id="departmentField" layoutX="20.0" layoutY="214.0" prefHeight="36.0" prefWidth="292.0" promptText="Department" />
-                              <Button fx:id="registerBtn" layoutX="88.0" layoutY="281.0" mnemonicParsing="false" onAction="#Register" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: #003638; -fx-background-radius: 10px;" text="Register" textFill="#f3f2c9" />
-                              <Button fx:id="slipBtn" layoutX="19.0" layoutY="89.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="34.0" prefWidth="294.0" style="-fx-background-color: #003638;" text="upload A level slip" textFill="#f3f2c9" />
+                              <Button fx:id="registerBtn" layoutX="88.0" layoutY="281.0" mnemonicParsing="false" onAction="#Register" prefHeight="36.0" prefWidth="214.0" style="-fx-background-color: #003638; -fx-background-radius: 10px;" text="Register" textFill="#f3f2c9">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                              <Button fx:id="slipBtn" layoutX="19.0" layoutY="89.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="34.0" prefWidth="294.0" style="-fx-background-color: #003638;" text="upload A level slip" textFill="#f3f2c9">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                            </children>
                         </AnchorPane>
                      </left>
