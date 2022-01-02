@@ -28,7 +28,7 @@ public class AdminController {
 	@FXML
 	private Button logouttBn;
 
-	// Event Listener on Button[#regBtn].onAction
+	//switch to register students page
 	@FXML
 	public void getRegisterPage(ActionEvent event) throws IOException {
 		System.out.println("done");
