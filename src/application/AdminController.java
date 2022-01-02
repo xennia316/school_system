@@ -38,7 +38,7 @@ public class AdminController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	// Event Listener on Button[#reportBtn].onAction
+	// Go to reports page
 	@FXML
 	public void getReportsPage(ActionEvent event) throws IOException {
 		root  = FXMLLoader.load(getClass().getResource("CreateReports.fxml"));
