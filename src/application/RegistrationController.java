@@ -10,6 +10,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
@@ -161,7 +162,7 @@ public class RegistrationController implements Initializable{
 		  String department[] =departmentField.getSelectionModel().getSelectedItem().split(" ");
 		  String departmentId =  department[0].substring(0, 1) + department[1].substring(0, 1);
 		  String classId = cycleId + departmentId;
-		String query = "Insert into student(studName, studSurname, sex, dob, nationality, pob, parentName, parentAddress, division, maritalStatus, cycleId, departmentId, classId, qualification) values('"+nameField.getText()+"','"+surnameField.getText()+"', '"+sexField.getSelectionModel().getSelectedItem()+"', '"+dobFIeld.getValue().toString()+"','"+nationalityField.getText()+"', '"+pobFIeld.getText()+"',  '"+parentnameFIeld.getText()+"', '"+parentaddressField.getText()+"', '"+divisionField.getText()+"','"+statusField.getText()+"', '"+cycleId+"', '"+departmentId+"', '"+classId+"', '"+bais+"')";
+		String query = "update student set studName ='"+nameField.getText()+"', studSurname  = '"+surnameField.getText()+"', sex = '"+sexField.getSelectionModel().getSelectedItem()+"', dob = '"+dobFIeld.getValue().toString()+"', nationality = '"+nationalityField.getText()+"', pob = '"+pobFIeld.getText()+"' , parentName = '"+parentnameFIeld.getText()+"' , parentAddress = '"+parentaddressField.getText()+"', division = '"+divisionField.getText()+"', maritalStatus = '"+statusField.getText()+"', cycleId  = '"+cycleId+"' , departmentId = '"+departmentId+"' , classId = '"+classId+"' , qualification = '"+bais+"' where username = '"+username.getText()+"' ";
 		System.out.println(cycleId);
 		System.out.println(departmentId);
 	    try {
@@ -169,7 +170,7 @@ public class RegistrationController implements Initializable{
 	    	
 	    	int i = statement.executeUpdate(query);
 	    	if(i == 1) {
-	    		regStatus.setText("Your Registration request is pending");
+	    		//regStatus.setText("Your Registration request is pending");
 	    		TranslateTransition toHome = new TranslateTransition(new Duration(500), slideHome);
 	    		toHome.setToX(slidingPane.getTranslateX());
 	    		toHome.play();
@@ -187,6 +188,23 @@ public class RegistrationController implements Initializable{
 	    }
 		
 	}
+	public void studentStatus() {
+		DatabaseConnection con  = new DatabaseConnection();
+		Connection connect = con.getConnection();
+		String query = "Select * from student where username = '"+username.getText()+"' ";
+		try {
+			Statement ps = connect.createStatement();
+			ResultSet rs = ps.executeQuery(query);
+			while(rs.next()) {
+				if(rs.getString("regStatus").contentEquals("pending"))regStatus.setText("Your Registration is pending");
+				else if(rs.getString("regStatus").contentEquals("registered"))regStatus.setText("You are successfully Registered");
+				else regStatus.setText("You are not yet registered");
+			}
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -196,6 +214,7 @@ public class RegistrationController implements Initializable{
 		cycleField.setItems(cycles);
 		ObservableList<String> departments = FXCollections.observableArrayList("Civil Engineering (CE)", "Rural Engineering (RE)", "Town Planning (TP)", "Land Surveying (LS)");
 		departmentField.setItems(departments);
+		studentStatus();
 		
 	}
 	 

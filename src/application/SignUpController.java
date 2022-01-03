@@ -95,10 +95,12 @@ public class SignUpController implements Initializable{
 		DatabaseConnection database  = new DatabaseConnection();
 		Connection con = database.getConnection();
 		String query = "Insert into user(username, passwords, role) values ('"+usernameField.getText()+"','"+passwordField.getText()+"', '"+roleField.getSelectionModel().getSelectedItem().toString()+"') ";
+		String query_two  = "Insert into student(username) values('"+usernameField.getText()+"' )";
 		try {
 			Statement ps = con.createStatement();
 			int i = ps.executeUpdate(query);
-			if(i == 1) {
+			int j = ps.executeUpdate(query_two);
+			if(i == 1 && j ==1) {
 				navigate(e);
 			}else {
 				System.out.println("not success");
@@ -115,8 +117,11 @@ public class SignUpController implements Initializable{
 		stage.show();
 	}
 	public void switchToStudPanel(ActionEvent e) throws IOException{
-		//FXMLLoader loader = new FXMLLoader();
-		root  = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("Registration.fxml"));
+		root = (Parent)loader.load();
+		RegistrationController cont = (RegistrationController)loader.getController();
+		cont.getUser(usernameField.getText());
 		stage =(Stage)((Node)e.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
