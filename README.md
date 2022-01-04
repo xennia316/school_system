@@ -1,2 +1,2 @@
-# school_system
-A Javafx application for a school system
+# school system 
+A Javafx application for a school system. 
