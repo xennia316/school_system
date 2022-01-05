@@ -31,7 +31,7 @@ public class AdminController {
 	//switch to register students page
 	@FXML
 	public void getRegisterPage(ActionEvent event) throws IOException {
-		System.out.println("done");
+		
 		root  = FXMLLoader.load(getClass().getResource("RegisterStudent.fxml"));
 		stage =(Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -41,7 +41,7 @@ public class AdminController {
 	// Go to reports page
 	@FXML
 	public void getReportsPage(ActionEvent event) throws IOException {
-		root  = FXMLLoader.load(getClass().getResource("CreateReports.fxml"));
+		root  = FXMLLoader.load(getClass().getResource("report.fxml"));
 		stage =(Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
