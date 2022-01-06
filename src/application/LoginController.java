@@ -40,7 +40,7 @@ public class LoginController {
 			usernameErr.setText("");
 		}
 		if(passwordField.getText().isEmpty()) {
-			passwordErr.setText("passwordmust not be empty");
+			passwordErr.setText("password must not be empty");
 		}else {
 			passwordErr.setText("");
 		}

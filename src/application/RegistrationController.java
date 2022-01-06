@@ -45,6 +45,7 @@ public class RegistrationController implements Initializable{
 	private ByteArrayInputStream bais;
 	private String fileName;
 	private Stage stage;
+	
 	@FXML
 	private Pane slidingPane;
 	@FXML
@@ -165,7 +166,7 @@ public class RegistrationController implements Initializable{
 		  String department[] =departmentField.getSelectionModel().getSelectedItem().split(" ");
 		  String departmentId =  department[0].substring(0, 1) + department[1].substring(0, 1);
 		  String classId = cycleId + departmentId;
-		String query = "update student set studName ='"+nameField.getText()+"', studSurname  = '"+surnameField.getText()+"', sex = '"+sexField.getSelectionModel().getSelectedItem()+"', dob = '"+dobFIeld.getValue().toString()+"', nationality = '"+nationalityField.getText()+"', pob = '"+pobFIeld.getText()+"' , parentName = '"+parentnameFIeld.getText()+"' , parentAddress = '"+parentaddressField.getText()+"', division = '"+divisionField.getText()+"', maritalStatus = '"+statusField.getText()+"', cycleId  = '"+cycleId+"' , departmentId = '"+departmentId+"' , classId = '"+classId+"' , qualification = '"+bais+"' where username = '"+username.getText()+"', fileName = '"+fileName+"' ";
+		String query = "update student set studName ='"+nameField.getText()+"', studSurname  = '"+surnameField.getText()+"', sex = '"+sexField.getSelectionModel().getSelectedItem()+"', dob = '"+dobFIeld.getValue().toString()+"', nationality = '"+nationalityField.getText()+"', pob = '"+pobFIeld.getText()+"' , parentName = '"+parentnameFIeld.getText()+"' , parentAddress = '"+parentaddressField.getText()+"', division = '"+divisionField.getText()+"', maritalStatus = '"+statusField.getText()+"', cycleId  = '"+cycleId+"' , departmentId = '"+departmentId+"' , classId = '"+classId+"' , qualification = '"+bais+"' where username = '"+username.getText()+"' ";
 		System.out.println(cycleId);
 		System.out.println(departmentId);
 	    try {
@@ -181,6 +182,7 @@ public class RegistrationController implements Initializable{
 	    			slideHome.setText("Home");
 	    		});
 	    		tabPane.getSelectionModel().select(tabHome);
+	    		regStatus.setText("Your Registration is pending");
 	    		System.out.println("welldone");
 	    	}else {
 	    		System.out.println("wene");

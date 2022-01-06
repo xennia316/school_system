@@ -49,6 +49,8 @@ public class SignUpController implements Initializable{
 	private Label passwordErr;
 	@FXML
 	private Label confirmErr;
+	@FXML
+	private Label errorMessage;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -102,11 +104,9 @@ public class SignUpController implements Initializable{
 			int j = ps.executeUpdate(query_two);
 			if(i == 1 && j ==1) {
 				navigate(e);
-			}else {
-				System.out.println("not success");
 			}
 		}catch(Exception err) {
-			err.printStackTrace();
+			errorMessage.setText("Username taken");
 		}
 	}
 	public void navigateTOLogin(ActionEvent e)throws IOException {

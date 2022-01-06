@@ -1,4 +1,4 @@
-package application.reports;
+package reports;
 
 public class Unregstud {
 

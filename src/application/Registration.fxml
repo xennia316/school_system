@@ -66,7 +66,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="regStatus" layoutX="46.0" layoutY="82.0" prefHeight="27.0" prefWidth="381.0" text="You are not yet registered" textFill="#003638">
+                        <Label fx:id="regStatus" layoutX="46.0" layoutY="82.0" prefHeight="27.0" prefWidth="444.0" textFill="#003638">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
