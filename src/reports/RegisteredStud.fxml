@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="table" layoutX="9.0" layoutY="70.0" prefHeight="256.0" prefWidth="501.0">
+      <TableView fx:id="table" layoutX="9.0" layoutY="70.0" prefHeight="256.0" prefWidth="502.0">
         <columns>
           <TableColumn fx:id="studId" prefWidth="75.0" text="Student Id" />
           <TableColumn fx:id="studName" prefWidth="176.0" text="Student names" />
@@ -17,7 +17,7 @@
       </TableView>
       <Label layoutX="192.0" layoutY="33.0" prefHeight="27.0" prefWidth="173.0" text="Registered Students" textFill="#003638">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
    </children>
